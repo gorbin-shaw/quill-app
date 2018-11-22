@@ -3,7 +3,7 @@
     {{ title }}
   </h2>
 </div>
-<quill-editor>
+<quill-editor #editor [(ngModel)]="editorContent" (onContentChanged)="logChange($event);">
   <div quill-editor-toolbar>
     <span class="ql-formats">
       <select class="ql-header" [title]="'Header'">
