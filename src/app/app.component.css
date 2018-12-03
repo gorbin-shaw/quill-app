@@ -32,3 +32,26 @@ quill-editor {
 .ql-font-aref {
   font-family: "Aref Ruqaa";
 }
+
+.top-div{
+  text-align: center;
+  padding: 15px;
+}
+
+span.h2 {
+  font-size: 1.6em;
+  font-style: bold;
+}
+
+span.save-status {
+  font-size: 0.9em;
+  padding-left: 3px;
+}
+
+span.save-status.progress {
+  color: #f33;
+}
+
+span.save-status.success {
+  color: #aaa;
+}

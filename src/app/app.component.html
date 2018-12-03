@@ -1,9 +1,9 @@
-<div style="text-align:center">
-  <h2>
-    {{ title }}
-  </h2>
+<div class="top-div">
+  <div *ngIf="pendingSave;then pending_save else save_success"></div>    
+  <ng-template #pending_save><span class="h2">{{ title }}</span> <span class="save-status progress"> [saving..] </span></ng-template>
+  <ng-template #save_success><span class="h2">{{ title }}</span> <span class="save-status success"> [saved] </span></ng-template>
 </div>
-<quill-editor #editor [(ngModel)]="editorContent" (onContentChanged)="logChange($event);">
+<quill-editor #editor [(ngModel)]="editorContent" (onContentChanged)="notifyChange($event);">
   <div quill-editor-toolbar>
     <span class="ql-formats">
       <select class="ql-header" [title]="'Header'">

@@ -25,7 +25,8 @@ var contentDelta = new Delta();
 export class AppComponent {
 
 	title = 'Assignment Editor';
-	editorContent = "";
+	editorContent = localStorage.getItem('assignment-content');
+	pendingSave = false;
 
 	@ViewChild('editor') editor: QuillEditorComponent;
 	
@@ -40,16 +41,19 @@ export class AppComponent {
       .subscribe(data => {
         //console.log('Debounced content change', data); //data not relevant
         //write to storage & clear delta
-        console.log('Updating storage', contentDelta);
+        //console.log('Updating in storage', contentDelta);
         contentDelta = new Delta();
+        this.pendingSave = false;
+        localStorage.setItem('assignment-content', this.editorContent);
       });
 
 	};
 	
-	logChange($event: any) {
+	notifyChange($event: any) {
     //console.log('Content changed', $event);
     //update contentDelta
     contentDelta = contentDelta.compose($event.delta);
+    this.pendingSave = true;
   }
 
 }
